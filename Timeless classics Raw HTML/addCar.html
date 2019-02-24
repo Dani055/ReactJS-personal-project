@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Timeless Classics</title>
+    <link href="./static/css/site.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">All cars</a></li>
+            <li><a href="#">Add car</a></li>
+            <div class="right">
+                <li>Welcome, Admin!</li>
+                <li><a href="#">Profile</a></li>
+                <li>
+                    <form id="logout-form" action="/logout" method="post"></form>
+                    <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+                </li>
+            </div>
+        </ul>
+    </header>
+    <main>
+		 <h1>Add car</h1>
+		<div class="form">
+			<form>
+				<label for="name">Car Brand</label>
+				<input type="text"><br>
+				<labe for="description">Description</label>
+                <textarea></textarea><br>
+                <label for="image">Image</label>
+                <input type="text"><br>
+                <label for="price">Price per Day</label>
+				<input type="number"><br>
+				<input type="submit" value="Create">
+			</form>
+		</div>
+    </main>
+    <footer>
+        Project @SoftUni
+    </footer>
+</body>
+
+</html>

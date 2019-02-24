@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Timeless Classics</title>
+  <link href="./static/css/site.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">All cars</a></li>
+      <li><a href="#">My rents</a></li>
+      <li><a href="#">Add car</a></li>
+      <div class="right">
+        <li>Welcome, pesho!</li>
+        <li><a href="#">Profile</a></li>
+        <li>
+          <form id="logout-form" action="/logout" method="post"></form>
+          <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+        </li>
+      </div>
+    </ul>
+  </header>
+  <main>
+    <h1>Edit Car</h1>
+    <div class="form">
+      <form>
+        <label for="name">Car Brand</label>
+        <input type="text" value="bmw m3"><br>
+        <labe for="description">Description</label>
+          <textarea>Nz</textarea><br>
+          <label for="image">Imgage</label>
+          <input type="text"><br>
+          <label for="price">Price per Day</label>
+          <input type="number"><br>
+          <input type="submit" value="Edit">
+          <input type="submit" value="Delete">
+      </form>
+    </div>
+  </main>
+  <footer>
+    Project @SoftUni
+  </footer>
+</body>
+
+</html>

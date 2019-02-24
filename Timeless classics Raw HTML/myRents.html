@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Timeless Classics</title>
+  <link href="./static/css/site.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">All cars</a></li>
+      <li><a href="#">My rents</a></li>
+      <li><a href="#">Add car</a></li>
+      <div class="right">
+        <li>Welcome, pesho!</li>
+        <li><a href="#">Profile</a></li>
+        <li>
+          <form id="logout-form" action="/logout" method="post"></form>
+          <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+        </li>
+      </div>
+    </ul>
+  </header>
+  <main>
+    <h1>My rented Cars</h1>
+    <div class="listings">
+      <div class="listing">
+        <h2>Bmw M3</h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/2018_BMW_M3_3.0.jpg/1200px-2018_BMW_M3_3.0.jpg"/>
+        <h3>Description: No desc</h3>
+        <p>Price: 50 Pounds</p>
+        <input type="submit" class="rent" value="Remove">
+      </div>
+      <div class="listing">
+        <h2>Bmw M3</h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/2018_BMW_M3_3.0.jpg/1200px-2018_BMW_M3_3.0.jpg"/>
+        <h3>Description: No desc</h3>
+        <p>Price: 50 Pounds</p>
+          <input type="submit" class="rent" value="Remove">   
+      </div>
+    </div>
+
+  </main>
+  <footer>
+      Project @SoftUni
+  </footer>
+</body>
+
+</html>

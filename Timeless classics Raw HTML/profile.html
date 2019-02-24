@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Timeless Classics</title>
+  <link href="./static/css/site.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">All cars</a></li>
+      <li><a href="#">My rents</a></li>
+      <li><a href="#">Add car</a></li>
+      <div class="right">
+        <li>Welcome, pesho!</li>
+        <li><a href="#">Profile</a></li>
+        <li>
+          <form id="logout-form" action="/logout" method="post"></form>
+          <a href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+        </li>
+      </div>
+    </ul>
+  </header>
+  <main>
+    <h1>My Profile</h1>
+    <div class="profile-box">
+      <img class="profileimg" src="https://themes.gohugo.io//theme/hugo-geo//img/profile.png">
+      <div class="profile">
+        <div class="info">
+          <h1>My info</h1>
+          <h3>First Name: Ivan</h3>
+          <h3>Last Name: Ivanov</h3>
+        </div>
+        <div class="more-info">
+          <h1>Rented Cars</h1>
+          <h4>You have 5 rented cars!<br>Check them out at My rents!</h4>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    Project @SoftUni
+  </footer>
+</body>
+
+</html>
