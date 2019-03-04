@@ -34,7 +34,7 @@ module.exports = {
   },
   rentCar: async(req, res) => {
     try {
-      const userId = req.body.userId;
+      const userId = req.userId;
       const carId = req.params.carId;
 
       let car = await Car.findById(carId)
@@ -71,7 +71,7 @@ module.exports = {
   getMyRents: async(req, res) => {
     try {
       console.log(req.body)
-      const userId = req.body.userId;
+      const userId = req.userId;
 
       let user = await User.findById(userId).populate('cars')
       
@@ -158,7 +158,7 @@ module.exports = {
   removeRent: async(req, res) => {
     try {
       const carId = req.params.carId;
-      const userId = req.body.userId;
+      const userId = req.userId;
 
       let car = await Car.findById(carId)
       let user = await User.findById(userId)

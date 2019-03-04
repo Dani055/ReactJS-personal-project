@@ -59,10 +59,14 @@ module.exports = {
           error.statusCode = 401;
           throw error;
         }
-
+        let isAdmin = false;
+        if(user.roles.indexOf('Admin') === 0){
+          isAdmin = true;
+        }
         const token = jwt.sign({ 
           username: user.username,
-          userId: user._id.toString()
+          userId: user._id.toString(),
+          isAdmin: isAdmin
         }
         , 'somesupersecret'
         , { expiresIn: '1h' });
