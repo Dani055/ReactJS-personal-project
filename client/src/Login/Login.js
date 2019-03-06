@@ -1,0 +1,58 @@
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import './Login.css';
+
+class Login extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            username: '',
+            password: '',
+        };
+
+        this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    }
+
+    onChangeHandler(event) {
+        const name = event.target.name;
+
+        if (this.state.hasOwnProperty(name)) {
+            const value = event.target.value;
+
+            this.setState({
+                [name]: value,
+            })
+        }
+    }
+
+    onSubmitHandler(event) {
+        event.preventDefault();
+
+        this.props.login(this.state);
+    }
+
+    render() {
+        if (this.props.user.isLoggedIn) {
+            return <Redirect to="/" />;
+        }
+
+        return (
+            <div>
+                <h1 className="form">Login</h1>
+                <div className="form">
+                    <form onSubmit={this.onSubmitHandler}>
+                        <label htmlFor="usernameLogin">Username</label>
+                        <input type="text" id="usernameLogin" name="username" onChange={this.onChangeHandler} value={this.state.username} /><br/>
+                        <label htmlFor="passwordLogin">Password</label>
+                        <input type="password" id="passwordLogin" name="password" onChange={this.onChangeHandler} value={this.state.password} /><br/>
+                        <input type="submit" value="Login" />
+                    </form>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default Login;

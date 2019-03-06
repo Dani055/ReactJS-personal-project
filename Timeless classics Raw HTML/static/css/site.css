@@ -156,6 +156,29 @@ div.listing input[type="submit"]:hover {
     color: #520469  ;
 }
 
+a.button{
+    display: inline-block;
+    width: 40%;
+    height: 40px;
+    background-color: #520469;
+    border: none;
+    font-size: 18px;
+    padding: 2px 6px 2px 6px;
+    border-radius: 4px;
+    color: white;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+/* a.button:hover {
+    width: 40%;
+    height: 40px;
+    background-color: white;
+    border: 2px solid #520469;
+    font-size: 16px;
+    border-radius: 4px;
+    color: #520469  ;
+} */
+
 input[type="submit"].rent{
     margin-left: 30%;
     margin-right: 30%;

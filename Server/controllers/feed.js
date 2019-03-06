@@ -39,9 +39,6 @@ module.exports = {
 
       let car = await Car.findById(carId)
 
-      let user = await User.findById(userId)
-      user.cars.push(carId);
-      await user.save()
       if(car.isRented == true){
         res.status(500)
         .json({
@@ -49,6 +46,11 @@ module.exports = {
         })
         return;
       }
+
+      let user = await User.findById(userId)
+      user.cars.push(carId);
+      await user.save()
+      
       car.isRented = true;
       car.renter = userId;
       await car.save()
