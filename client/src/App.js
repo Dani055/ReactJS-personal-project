@@ -11,9 +11,11 @@ import Home from './Home/Home'
 import Create from './Create/Create'
 import AllCars from './AllCars/AllCars'
 import MyRents from './MyRents/MyRents'
+import Edit from './Edit/Edit';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.min.css';
+
 
 class App extends Component {
 
@@ -107,11 +109,12 @@ class App extends Component {
             <ToastContainer closeButton={false} />
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/cars" render={() => <AllCars user={this.state.user}/>} />
-              <Route exact path="/login" render={() => <Login login={this.login} user={this.state.user} />} />
-              <Route exact path="/register" render={() => <Register login={this.login} user={this.state.user} />} />
-              <Route exact path="/cars/myrents" render={() => <MyRents user={this.state.user} />} />
-              <Route exact path="/car/create" render={() => <Create user={this.state.user} />} />
+              <Route exact path="/cars" render={(props) => <AllCars {...props} user={this.state.user}/>} />
+              <Route exact path="/login" render={(props) => <Login {...props} login={this.login} user={this.state.user} />} />
+              <Route exact path="/register" render={(props) => <Register {...props} login={this.login} user={this.state.user} />} />
+              <Route exact path="/cars/myrents" render={(props) => <MyRents {...props} user={this.state.user} />} />
+              <Route exact path="/car/create" render={(props) => <Create {...props} user={this.state.user} />} />
+              <Route exact path="/car/edit/:id" render={(props) => <Edit {...props} user={this.state.user} />} />
               <Route component={NotFound} />
             </Switch>
           </Fragment>

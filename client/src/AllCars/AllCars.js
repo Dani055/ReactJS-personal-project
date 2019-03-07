@@ -16,7 +16,8 @@ class allCars extends Component {
 
     rentCar(event) {
         event.preventDefault();
-        const carId = event.target.id;
+
+        const carId = event.target.getAttribute('data-carid')
 
         fetch(`http://localhost:9999/feed/car/rent/${carId}`, {
             method: 'POST',
@@ -74,7 +75,7 @@ class allCars extends Component {
                                 }
                                 {
                                     this.props.user.isLoggedIn && !this.props.user.isAdmin ?
-                                        <Link name="rent" to='#' id={car._id} className="button" onClick={this.rentCar}>Rent</Link> :
+                                        <Link name="rent" to='#' data-carid={car._id}  className="button" onClick={this.rentCar}>Rent</Link> :
                                         null
                                 }
                             </div>
@@ -82,8 +83,6 @@ class allCars extends Component {
                     }
                 </div>
             </Fragment>
-
-
         );
     }
 }
