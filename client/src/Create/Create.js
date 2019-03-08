@@ -92,7 +92,7 @@ class Create extends Component {
     }
 
     return (
-      <Fragment>
+      <div className="create">
         <h1>Add car</h1>
         <div className="form">
           <form onSubmit={this.onSubmitHandler}>
@@ -107,7 +107,7 @@ class Create extends Component {
             <input type="submit" value="Create" />
           </form>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

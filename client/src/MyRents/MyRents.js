@@ -54,11 +54,11 @@ class myRents extends Component {
     }
 
     render() {
-        if (this.state.redirect) {
+        if (this.state.redirect || !this.props.user.isLoggedIn) {
             return <Redirect to='/' />;
         }
         return (
-            <Fragment>
+            <div className="myRents">
                 <h1>My rented cars</h1>
                 <div className="listings">
                     {
@@ -73,7 +73,7 @@ class myRents extends Component {
                         ))
                     }
                 </div>
-            </Fragment>
+            </div>
 
 
         );

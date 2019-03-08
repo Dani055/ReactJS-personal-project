@@ -58,7 +58,7 @@ class allCars extends Component {
             return <Redirect to='/' />;
         }
         return (
-            <Fragment>
+            <div class="allcars">
                 <h1>All cars</h1>
                 <div className="listings">
                     {
@@ -82,7 +82,7 @@ class allCars extends Component {
                         ))
                     }
                 </div>
-            </Fragment>
+            </div>
         );
     }
 }

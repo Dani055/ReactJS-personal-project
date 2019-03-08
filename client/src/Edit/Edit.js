@@ -135,7 +135,7 @@ class Edit extends Component {
         }
 
         return (
-            <Fragment>
+            <div className="edit">
                 <h1>Edit Car</h1>
                 <div class="form">
                     <form onSubmit={this.onSubmitHandler}>
@@ -150,8 +150,8 @@ class Edit extends Component {
                         <input type="submit" name="edit" value="Edit" />
                     </form>
                 </div>
-                <Link name="rent" to='#' data-carid={this.props.match.params.id} className="button" onClick={this.deleteCar}>Delete</Link>
-            </Fragment>
+                <Link name="rent" to='#' data-carid={this.props.match.params.id} className="buttonEdit" onClick={this.deleteCar}>Delete</Link>
+            </div>
         );
     }
 }

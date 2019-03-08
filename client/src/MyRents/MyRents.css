@@ -1,58 +1,39 @@
-div.listing button {
-    display: inline-block;
-    width: 40%;
-    height: 40px;
-    background-color: #520469;
-    border: none;
-    font-size: 18px;
-    border-radius: 4px;
-    color: white;
-}
-div.listing button:hover {
-    width: 40%;
-    height: 40px;
-    margin-top: 5px;
-    background-color: white;
-    border: 2px solid #520469;
-    font-size: 16px;
-    border-radius: 4px;
-    color: #520469  ;
-}
-div.listings:after{
+div.myRents div.listings:after{
     content: "";
     display: table;
     clear: both;
 }
 
 
-a.button{
+div.myRents a.button{
     display: inline-block;
     width: 40%;
     height: 40px;
     background-color: #520469;
     border: none;
-    font-size: 18px;
+    font-size: 35px;
     border-radius: 4px;
     color: white;
     margin-left: 30%;
     margin-right: 30%;
+    text-decoration: none;
+    text-align: center
 }
 
 
-div.listing,
-div.team {
+div.myRents div.listing{
     float: left;
     width: 33.33%;
 }
 
-div.listing h2{
+div.myRents div.listing h2{
     text-align: center;
     background-color: #920c0c;
     color: white;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 2px;
 }
-div.listings img {
+div.myRents div.listings img {
     display: block;
     margin-left: auto;
     margin-right: auto;
