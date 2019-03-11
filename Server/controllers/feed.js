@@ -184,5 +184,30 @@ module.exports = {
           error
         })
     };
+  },
+  getProfile: async (req, res) => {
+    try {
+      const userId = req.userId;
+      let user = await User.findById(userId)
+      if (!user) {
+        res.status(401).json(
+          {
+            message: 'User doesnt exist'
+          });
+        return;
+      }
+      res.status(200).json(
+        {
+          message: 'Fetched profile successfully',
+          user: user
+        });
+    }
+    catch (err) {
+      res.status(200)
+        .json({
+          error
+        })
+    }
+
   }
 }

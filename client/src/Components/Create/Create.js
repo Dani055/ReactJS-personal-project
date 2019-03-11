@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -87,7 +87,11 @@ class Create extends Component {
   }
 
   render() {
-    if (!this.props.user.isAdmin || this.state.redirect) {
+    if (this.state.redirect) {
+      return <Redirect to='/' />;
+    }
+    if(!this.props.user.isAdmin){
+      toast.error('You are not authorized!')
       return <Redirect to='/' />;
     }
 

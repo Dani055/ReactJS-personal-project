@@ -20,10 +20,10 @@ module.exports = {
   signUp: (req, res, next) => {
 
     if (validateUser(req, res)) {
-      const {  username, password,firstName, lastName, imageUrl } = req.body;
+      const { username, password, firstName, lastName, imageUrl } = req.body;
       const salt = encryption.generateSalt();
       const hashedPassword = encryption.generateHashedPassword(salt, password);
-      User.create({ 
+      User.create({
         username,
         hashedPassword,
         firstName,
@@ -34,13 +34,13 @@ module.exports = {
         res.status(201)
           .json({ message: 'User created!', userId: user._id, username: user.username });
       })
-      .catch((error) => {
-        if (!error.statusCode) {
-          error.statusCode = 500;
-        }
+        .catch((error) => {
+          if (!error.statusCode) {
+            error.statusCode = 500;
+          }
 
-        next(error);
-      });
+          next(error);
+        });
     }
   },
   signIn: (req, res, next) => {
@@ -54,31 +54,31 @@ module.exports = {
           throw error;
         }
 
-        if(!user.authenticate(password)) {
+        if (!user.authenticate(password)) {
           const error = new Error('Incorrect password');
           error.statusCode = 401;
           throw error;
         }
         let isAdmin = false;
-        if(user.roles.indexOf('Admin') === 0){
+        if (user.roles.indexOf('Admin') === 0) {
           isAdmin = true;
         }
-        const token = jwt.sign({ 
+        const token = jwt.sign({
           username: user.username,
           userId: user._id.toString(),
           isAdmin: isAdmin
         }
-        , 'somesupersecret'
-        , { expiresIn: '1h' });
+          , 'somesupersecret'
+          , { expiresIn: '1h' });
 
-         res.status(200).json(
-           { 
-             message: 'User successfully logged in!', 
-             token, 
-             userId: user._id.toString(),
-             username: user.username,
-             isAdmin: user.roles.indexOf('Admin') != -1
-           });
+        res.status(200).json(
+          {
+            message: 'User successfully logged in!',
+            token,
+            userId: user._id.toString(),
+            username: user.username,
+            isAdmin: user.roles.indexOf('Admin') != -1
+          });
       })
       .catch(error => {
         if (!error.statusCode) {

@@ -1,11 +1,11 @@
-div.myRents div.listings:after{
+div.allcars div.listings:after{
     content: "";
     display: table;
     clear: both;
 }
 
 
-div.myRents a.button{
+div.allcars a.button{
     display: inline-block;
     width: 40%;
     height: 40px;
@@ -17,23 +17,32 @@ div.myRents a.button{
     margin-left: 30%;
     margin-right: 30%;
     text-decoration: none;
-    text-align: center
+    text-align: center;
+}
+div.allcars a.button:hover{
+    display: inline-block;
+    background-color: white;
+    border: 2px solid #520469;
+    border-radius: 4px;
+    color: #520469;
+    width: 39%;
+    height: 38px;
 }
 
 
-div.myRents div.listing{
+div.allcars div.listing{
     float: left;
     width: 33.33%;
 }
 
-div.myRents div.listing h2{
+div.allcars div.listing h2{
     text-align: center;
     background-color: #920c0c;
     color: white;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 2px;
 }
-div.myRents div.listings img {
+div.allcars div.listings img {
     display: block;
     margin-left: auto;
     margin-right: auto;

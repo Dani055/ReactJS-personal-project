@@ -12,4 +12,5 @@ router.get('/car/edit/:carId', isAuthAndAdmin,feedController.getCarById);
 router.post('/car/edit/:carId', isAuthAndAdmin,feedController.editCar);
 router.post('/car/delete/:carId', isAuthAndAdmin,feedController.deleteCar);
 router.post('/car/unrent/:carId', isAuth,feedController.removeRent);
+router.get('/profile', isAuth, feedController.getProfile);
 module.exports = router;

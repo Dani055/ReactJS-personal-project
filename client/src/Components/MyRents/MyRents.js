@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import './MyRents.css'
 import { toast } from 'react-toastify';
@@ -54,7 +54,11 @@ class myRents extends Component {
     }
 
     render() {
-        if (this.state.redirect || !this.props.user.isLoggedIn) {
+        if (this.state.redirect) {
+            return <Redirect to='/' />;
+        }
+        if(!this.props.user.isLoggedIn){
+            toast.error('You are not authenticated!')
             return <Redirect to='/' />;
         }
         return (
@@ -68,7 +72,7 @@ class myRents extends Component {
                                 <img src={car.imageUrl} alt="" />
                                 <h3>Description: {car.description}</h3>
                                 <p>Price per day: {car.pricePerDay} Pounds</p>
-                                <Link name="rent" to='#' id={car._id} className="button" onClick={this.removeCar}>Remove</Link> :
+                                <Link name="rent" to='#' id={car._id} className="button" onClick={this.removeCar}>Remove</Link>
                             </div>
                         ))
                     }

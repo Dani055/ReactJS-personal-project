@@ -1,17 +1,18 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 
 import NotFound from './NotFound';
-import Header from './Header/Header'
-import Register from './Register/Register'
-import Login from './Login/Login'
-import Home from './Home/Home'
-import Create from './Create/Create'
-import AllCars from './AllCars/AllCars'
-import MyRents from './MyRents/MyRents'
-import Edit from './Edit/Edit';
+import Header from './Components/Header/Header'
+import Register from './Components/Register/Register'
+import Login from './Components/Login/Login'
+import Home from './Components/Home/Home'
+import Create from './Components/Create/Create'
+import AllCars from './Components/AllCars/AllCars'
+import MyRents from './Components/MyRents/MyRents'
+import Edit from './Components/Edit/Edit';
+import Profile from './Components/Profile/Profile';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -113,6 +114,7 @@ class App extends Component {
               <Route exact path="/login" render={(props) => <Login {...props} login={this.login} user={this.state.user} />} />
               <Route exact path="/register" render={(props) => <Register {...props} login={this.login} user={this.state.user} />} />
               <Route exact path="/cars/myrents" render={(props) => <MyRents {...props} user={this.state.user} />} />
+              <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />} />
               <Route exact path="/car/create" render={(props) => <Create {...props} user={this.state.user} />} />
               <Route exact path="/car/edit/:id" render={(props) => <Edit {...props} user={this.state.user} />} />
               <Route component={NotFound} />

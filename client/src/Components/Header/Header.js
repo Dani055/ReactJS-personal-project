@@ -19,7 +19,7 @@ function Header(props) {
                             props.user.isLoggedIn ?
                                 <React.Fragment>
                                     <li>Welcome, {props.user.username} !</li>
-                                    <li><Link to="#">Profile</Link></li>
+                                    <li><Link to="/profile">Profile</Link></li>
                                     <li>
                                         <Link to="#" onClick={props.logout}>Logout</Link>
                                     </li>

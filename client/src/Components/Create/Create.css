@@ -15,11 +15,10 @@ div.create textarea {
     resize: none;
 }
 div.create input[type="text"]:hover,
-
 div.create textarea:hover {
     margin-top: 5px;
     width: 100%;
-    height: 10px;
+    height: 30px;
     margin-bottom: 5px;
     border: 1px solid rgb(172, 171, 171);
     background-color: rgb(251, 251, 251);
@@ -43,8 +42,9 @@ div.create input[type="submit"] {
     margin-top: 5px;
     margin-left: 30%;
     background-color: #520469;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
     border: none;
-    font-size: 16px;
+    font-size: 22px;
     border-radius: 4px;
     color: white;
 }
@@ -54,7 +54,7 @@ div.create input[type="submit"]:hover {
     margin-top: 5px;
     background-color: white;
     border: 2px solid #520469;
-    font-size: 16px;
+    font-size: 22px;
     border-radius: 4px;
     color: #520469  ;
 }

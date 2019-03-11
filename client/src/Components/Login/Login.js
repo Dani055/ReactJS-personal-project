@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './Login.css';
+import { toast } from 'react-toastify';
 
 class Login extends Component {
     constructor(props) {

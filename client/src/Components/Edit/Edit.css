@@ -16,18 +16,30 @@ div.edit textarea {
 }
 div.edit a.buttonEdit{
     display: inline-block;
-    width: 6%;
-    height: 38px;
+    width: 7%;
+    height: 40px;
     background-color: #520469;
     border: none;
-    font-size: 20px;
+    font-size: 22px;
     border-radius: 4px;
     color: white;
-    margin-left: 47%;
+    margin-left: 46.5%;
     margin-top:5px;
-    margin-right: 47%;
+    margin-right: 46.5%;
     text-align: center;
     text-decoration: none
+}
+div.edit a.buttonEdit:hover{
+    display: inline-block;
+    width: 6.7%;
+    height: 38px;
+    background-color: white;
+    border: none;
+    font-size: 22px;
+    border-radius: 4px;
+    color: #520469;
+    border: 2px solid #520469;
+    border-radius: 4px;
 }
 
 div.edit input[type="text"]:hover{
@@ -75,7 +87,7 @@ div.edit input[type="submit"]:hover {
     margin-top: 5px;
     background-color: white;
     border: 2px solid #520469;
-    font-size: 16px;
+    font-size: 22px;
     border-radius: 4px;
     color: #520469  ;
 }

@@ -5,7 +5,6 @@ const User = require('../models/User');
 
 router.post('/signup',
   [
-    // TODO: Add normalize email and check
     body('username')
       .withMessage('Please enter a valid username.')
       .custom((value, { req }) => {
@@ -30,5 +29,6 @@ router.post('/signup',
   ]
   , authController.signUp);
 router.post('/signin', authController.signIn);
+
 
 module.exports = router;
