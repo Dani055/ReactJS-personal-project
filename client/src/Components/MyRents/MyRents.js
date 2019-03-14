@@ -7,8 +7,9 @@ class myRents extends Component {
         super(props);
 
         this.state = {
-            cars: [],
-            redirect: false
+            cars: null,
+            redirect: false,
+            isLoading: true
         };
         this.removeCar = this.removeCar.bind(this);
     }
@@ -25,6 +26,7 @@ class myRents extends Component {
             .then((data) => {
                 this.setState({
                     cars: data.cars,
+                    isLoading: false
                 })
             })
             .catch(console.log);
@@ -61,26 +63,29 @@ class myRents extends Component {
             toast.error('You are not authenticated!')
             return <Redirect to='/' />;
         }
-        return (
-            <div className="myRents">
-                <h1>My rented cars</h1>
-                <div className="listings">
-                    {
-                        this.state.cars.map((car) => (
-                            <div key={car._id} className="listing">
-                                <h2>{car.brand}</h2>
-                                <img src={car.imageUrl} alt="" />
-                                <h3>Description: {car.description}</h3>
-                                <p>Price per day: {car.pricePerDay} Pounds</p>
-                                <Link name="rent" to='#' id={car._id} className="button" onClick={this.removeCar}>Remove</Link>
-                            </div>
-                        ))
-                    }
+        if(!this.state.isLoading){
+            return (
+                <div className="myRents">
+                    <h1>My rented cars</h1>
+                    <div className="listings">
+                        {
+                            this.state.cars.map((car) => (
+                                <div key={car._id} className="listing">
+                                    <h2>{car.brand}</h2>
+                                    <img src={car.imageUrl} alt="" />
+                                    <h3>Description: {car.description}</h3>
+                                    <p>Price per day: {car.pricePerDay} Pounds</p>
+                                    <Link name="rent" to='#' id={car._id} className="button" onClick={this.removeCar}>Remove</Link>
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
-            </div>
-
-
-        );
+            );
+        }
+        return (
+            <h1>Loading...</h1>
+        )
     }
 }
 

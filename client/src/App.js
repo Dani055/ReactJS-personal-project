@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
+import './App.css';
 
 import NotFound from './NotFound';
 import Header from './Components/Header/Header'
@@ -14,7 +15,6 @@ import MyRents from './Components/MyRents/MyRents'
 import Edit from './Components/Edit/Edit';
 import Profile from './Components/Profile/Profile';
 
-import './App.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 
@@ -26,10 +26,11 @@ class App extends Component {
     this.state = {
       user: {
         isLoggedIn: false,
-        username: '',
-        token: '',
+        username: null,
+        token: null,
         isAdmin: false,
       },
+      isLoading: true
     };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -49,7 +50,7 @@ class App extends Component {
           toast.error(data.message);
           return;
         }
-        
+
         localStorage.setItem('username', data.username);
         localStorage.setItem('token', data.token);
         localStorage.setItem('isAdmin', data.isAdmin);
@@ -76,19 +77,24 @@ class App extends Component {
     this.setState({
       user: {
         isLoggedIn: false,
-        username: '',
-        token: '',
+        username: null,
+        token: null,
         isAdmin: false,
       },
     });
 
+  }
+  componentDidMount() {
+    this.setState({
+      isLoading: false
+    })
   }
   componentWillMount() {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     let isAdmin = localStorage.getItem('isAdmin');
     isAdmin = JSON.parse(isAdmin)
-    
+
     if (localStorage.getItem('token')) {
       this.setState({
         user: {
@@ -99,30 +105,37 @@ class App extends Component {
         },
       });
     }
-    
+
   }
   render() {
+    if (!this.state.isLoading) {
+      return (
+        <div className="App">
+          <Router>
+            <Fragment>
+              <Header logout={this.logout} user={this.state.user} />
+              <ToastContainer closeButton={false} />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/cars" render={(props) => <AllCars {...props} user={this.state.user} />} />
+                <Route exact path="/login" render={(props) => <Login {...props} login={this.login} user={this.state.user} />} />
+                <Route exact path="/register" render={(props) => <Register {...props} login={this.login} user={this.state.user} />} />
+                <Route exact path="/cars/myrents" render={(props) => <MyRents {...props} user={this.state.user} />} />
+                <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />} />
+                <Route exact path="/car/create" render={(props) => <Create {...props} user={this.state.user} />} />
+                <Route exact path="/car/edit/:id" render={(props) => <Edit {...props} user={this.state.user} />} />
+                <Route component={NotFound} />
+              </Switch>
+            </Fragment>
+          </Router>
+        </div>
+      );
+    }
     return (
       <div className="App">
-        <Router>
-          <Fragment>
-            <Header logout={this.logout} user={this.state.user} />
-            <ToastContainer closeButton={false} />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/cars" render={(props) => <AllCars {...props} user={this.state.user}/>} />
-              <Route exact path="/login" render={(props) => <Login {...props} login={this.login} user={this.state.user} />} />
-              <Route exact path="/register" render={(props) => <Register {...props} login={this.login} user={this.state.user} />} />
-              <Route exact path="/cars/myrents" render={(props) => <MyRents {...props} user={this.state.user} />} />
-              <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />} />
-              <Route exact path="/car/create" render={(props) => <Create {...props} user={this.state.user} />} />
-              <Route exact path="/car/edit/:id" render={(props) => <Edit {...props} user={this.state.user} />} />
-              <Route component={NotFound} />
-            </Switch>
-          </Fragment>
-        </Router>
+        <h1>Loading...</h1>
       </div>
-    );
+    )
   }
 }
 

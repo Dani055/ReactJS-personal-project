@@ -7,9 +7,10 @@ class allCars extends Component {
         super(props);
 
         this.state = {
-            cars: [],
+            cars: null,
             carId: null,
-            redirect: false
+            redirect: false,
+            isLoading: true
         };
         this.rentCar = this.rentCar.bind(this);
     }
@@ -48,6 +49,7 @@ class allCars extends Component {
             .then((data) => {
                 this.setState({
                     cars: data.cars,
+                    isLoading: false
                 })
             })
             .catch(console.log);
@@ -57,33 +59,38 @@ class allCars extends Component {
         if(this.state.redirect) {
             return <Redirect to='/' />;
         }
-        return (
-            <div class="allcars">
-                <h1>All cars</h1>
-                <div className="listings">
-                    {
-                        this.state.cars.map((car) => (
-                            <div key={car._id} className="listing">
-                                <h2>{car.brand}</h2>
-                                <img src={car.imageUrl} alt="" />
-                                <h3>Description: {car.description}</h3>
-                                <p>Price per day: {car.pricePerDay} Pounds</p>
-                                {
-                                    this.props.user.isLoggedIn && this.props.user.isAdmin ?
-                                        <Link to={`/car/edit/${car._id}`} className="button">Edit</Link> :
-                                        null
-                                }
-                                {
-                                    this.props.user.isLoggedIn && !this.props.user.isAdmin ?
-                                        <Link name="rent" to='#' data-carid={car._id}  className="button" onClick={this.rentCar}>Rent</Link> :
-                                        null
-                                }
-                            </div>
-                        ))
-                    }
+        if(!this.state.isLoading){
+            return (
+                <div className="allcars">
+                    <h1>All cars</h1>
+                    <div className="listings">
+                        {
+                            this.state.cars.map((car) => (
+                                <div key={car._id} className="listing">
+                                    <h2>{car.brand}</h2>
+                                    <img src={car.imageUrl} alt="" />
+                                    <h3>Description: {car.description}</h3>
+                                    <p>Price per day: {car.pricePerDay} Pounds</p>
+                                    {
+                                        this.props.user.isLoggedIn && this.props.user.isAdmin ?
+                                            <Link to={`/car/edit/${car._id}`} className="button">Edit</Link> :
+                                            null
+                                    }
+                                    {
+                                        this.props.user.isLoggedIn && !this.props.user.isAdmin ?
+                                            <Link name="rent" to='#' data-carid={car._id}  className="button" onClick={this.rentCar}>Rent</Link> :
+                                            null
+                                    }
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        return(
+            <h1>Loading...</h1>
+        )
     }
 }
 

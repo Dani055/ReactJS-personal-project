@@ -13,9 +13,10 @@ class Create extends Component {
         brand: '',
         description: '',
         imageUrl: '',
-        pricePerDay: '',
+        pricePerDay: ''
       },
       redirect: false,
+      isLoading: true
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -85,7 +86,11 @@ class Create extends Component {
 
     return isValid;
   }
-
+  componentDidMount(){
+    this.setState({
+      isLoading: false
+    })
+  }
   render() {
     if (this.state.redirect) {
       return <Redirect to='/' />;
@@ -94,25 +99,29 @@ class Create extends Component {
       toast.error('You are not authorized!')
       return <Redirect to='/' />;
     }
-
-    return (
-      <div className="create">
-        <h1>Add car</h1>
-        <div className="form">
-          <form onSubmit={this.onSubmitHandler}>
-            <label htmlFor="brand">Car Brand</label>
-            <input type="text" id="brand" name="brand" onChange={this.onChangeHandler} value={this.state.car.brand} /><br />
-            <label htmlFor="description">Description</label>
-            <textarea id="description" name="description" onChange={this.onChangeHandler} value={this.state.car.description}></textarea><br />
-            <label htmlFor="image">Image</label>
-            <input type="text" id="imageUrl" name="imageUrl" onChange={this.onChangeHandler} value={this.state.car.imageUrl} /><br />
-            <label htmlFor="price">Price per Day</label>
-            <input type="number" id="pricePerDay" name="pricePerDay" onChange={this.onChangeHandler} value={this.state.car.pricePerDay} /><br />
-            <input type="submit" value="Create" />
-          </form>
+    if(!this.state.isLoading){
+      return (
+        <div className="create">
+          <h1>Add car</h1>
+          <div className="form">
+            <form onSubmit={this.onSubmitHandler}>
+              <label htmlFor="brand">Car Brand</label>
+              <input type="text" id="brand" name="brand" onChange={this.onChangeHandler} value={this.state.car.brand} /><br />
+              <label htmlFor="description">Description</label>
+              <textarea id="description" name="description" onChange={this.onChangeHandler} value={this.state.car.description}></textarea><br />
+              <label htmlFor="image">Image</label>
+              <input type="text" id="imageUrl" name="imageUrl" onChange={this.onChangeHandler} value={this.state.car.imageUrl} /><br />
+              <label htmlFor="price">Price per Day</label>
+              <input type="number" id="pricePerDay" name="pricePerDay" onChange={this.onChangeHandler} value={this.state.car.pricePerDay} /><br />
+              <input type="submit" value="Create" />
+            </form>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return(
+      <h1>Loading...</h1>
+    )
   }
 }
 

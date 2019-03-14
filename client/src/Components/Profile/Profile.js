@@ -36,16 +36,16 @@ class Profile extends Component {
         if (this.state.redirect) {
             return <Redirect to='/' />;
         }
-        if(!this.props.user.isLoggedIn){
+        if (!this.props.user.isLoggedIn) {
             toast.error('You are not authenticated!')
             return <Redirect to='/' />;
         }
-        if(!this.state.isLoading){
+        if (!this.state.isLoading) {
             return (
                 <div className="profilemain">
                     <h1>My Profile</h1>
                     <div className="profile-box">
-                        <img className="profileimg" src={this.state.user.imageUrl} alt=""/>
+                        <img className="profileimg" src={this.state.user.imageUrl} alt="" />
                         <div className="profile">
                             <div className="info">
                                 <h1>My info</h1>
@@ -61,11 +61,9 @@ class Profile extends Component {
                 </div>
             );
         }
-        else{
-            return(
-                <h1>Loading...</h1>
-            )
-        }
+        return (
+            <h1>Loading...</h1>
+        )
     }
 }
 

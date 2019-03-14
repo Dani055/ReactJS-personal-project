@@ -9,13 +9,9 @@ class Edit extends Component {
         super(props);
 
         this.state = {
-            car: {
-                brand: '',
-                description: '',
-                imageUrl: '',
-                pricePerDay: '',
-            },
+            car: null,
             redirect: false,
+            isLoading: true
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -75,6 +71,7 @@ class Edit extends Component {
             .then((data) => {
                 this.setState({
                     car: data.car,
+                    isLoading: false
                 })
             })
             .catch(console.log);
@@ -133,26 +130,30 @@ class Edit extends Component {
         if (!this.props.user.isAdmin || this.state.redirect) {
             return <Redirect to='/' />;
         }
-
-        return (
-            <div className="edit">
-                <h1>Edit Car</h1>
-                <div class="form">
-                    <form onSubmit={this.onSubmitHandler}>
-                        <label htmlFor="brand">Car Brand</label>
-                        <input type="text" id="brand" name="brand" onChange={this.onChangeHandler} value={this.state.car.brand} /><br />
-                        <label htmlFor="description">Description</label>
-                        <textarea id="description" name="description" onChange={this.onChangeHandler} value={this.state.car.description}></textarea><br />
-                        <label htmlFor="image">Image</label>
-                        <input type="text" id="imageUrl" name="imageUrl" onChange={this.onChangeHandler} value={this.state.car.imageUrl} /><br />
-                        <label htmlFor="price">Price per Day</label>
-                        <input type="number" id="pricePerDay" name="pricePerDay" onChange={this.onChangeHandler} value={this.state.car.pricePerDay} /><br />
-                        <input type="submit" name="edit" value="Edit" />
-                    </form>
+        if(!this.state.isLoading){
+            return (
+                <div className="edit">
+                    <h1>Edit Car</h1>
+                    <div className="form">
+                        <form onSubmit={this.onSubmitHandler}>
+                            <label htmlFor="brand">Car Brand</label>
+                            <input type="text" id="brand" name="brand" onChange={this.onChangeHandler} value={this.state.car.brand} /><br />
+                            <label htmlFor="description">Description</label>
+                            <textarea id="description" name="description" onChange={this.onChangeHandler} value={this.state.car.description}></textarea><br />
+                            <label htmlFor="image">Image</label>
+                            <input type="text" id="imageUrl" name="imageUrl" onChange={this.onChangeHandler} value={this.state.car.imageUrl} /><br />
+                            <label htmlFor="price">Price per Day</label>
+                            <input type="number" id="pricePerDay" name="pricePerDay" onChange={this.onChangeHandler} value={this.state.car.pricePerDay} /><br />
+                            <input type="submit" name="edit" value="Edit" />
+                        </form>
+                    </div>
+                    <Link name="rent" to='#' data-carid={this.props.match.params.id} className="buttonEdit" onClick={this.deleteCar}>Delete</Link>
                 </div>
-                <Link name="rent" to='#' data-carid={this.props.match.params.id} className="buttonEdit" onClick={this.deleteCar}>Delete</Link>
-            </div>
-        );
+            );
+        }
+        return(
+            <h1>Loading...</h1>
+        )
     }
 }
 

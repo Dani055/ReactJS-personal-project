@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './Login.css';
-import { toast } from 'react-toastify';
 
 class Login extends Component {
     constructor(props) {
@@ -10,6 +9,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
+            isLoading: true
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -33,26 +33,34 @@ class Login extends Component {
 
         this.props.login(this.state);
     }
-
+    componentDidMount() {
+        this.setState({
+            isLoading: false
+        })
+    }
     render() {
         if (this.props.user.isLoggedIn) {
             return <Redirect to="/" />;
         }
-
-        return (
-            <div className="login">
-                <h1 className="form">Login</h1>
-                <div className="form">
-                    <form onSubmit={this.onSubmitHandler}>
-                        <label htmlFor="usernameLogin">Username</label>
-                        <input type="text" id="usernameLogin" name="username" onChange={this.onChangeHandler} value={this.state.username} /><br/>
-                        <label htmlFor="passwordLogin">Password</label>
-                        <input type="password" id="passwordLogin" name="password" onChange={this.onChangeHandler} value={this.state.password} /><br/>
-                        <input type="submit" value="Login" />
-                    </form>
+        if(!this.state.isLoading){
+            return (
+                <div className="login">
+                    <h1 className="form">Login</h1>
+                    <div className="form">
+                        <form onSubmit={this.onSubmitHandler}>
+                            <label htmlFor="usernameLogin">Username</label>
+                            <input type="text" id="usernameLogin" name="username" onChange={this.onChangeHandler} value={this.state.username} /><br/>
+                            <label htmlFor="passwordLogin">Password</label>
+                            <input type="password" id="passwordLogin" name="password" onChange={this.onChangeHandler} value={this.state.password} /><br/>
+                            <input type="submit" value="Login" />
+                        </form>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        return(
+            <h1>Loading...</h1>
+        )
     }
 }
 
