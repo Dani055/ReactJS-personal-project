@@ -45,6 +45,11 @@ div.myRents div.listing h2{
 div.myRents div.listings img {
     display: block;
     margin-left: auto;
+    max-height: 300px;
+    max-width: 95%;
     margin-right: auto;
     width: 95%;
+    height: 300px;
+    min-height: 95%;
+    min-width: 95%;
 }

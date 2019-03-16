@@ -17,6 +17,7 @@ div.profilemain img.profileimg {
     margin-top: 20px;
     margin-right: auto;
     width: 150px;
+    height: 30%;
 }
 div.profilemain div.info {
     display: flex;
