@@ -40,7 +40,7 @@ class allCars extends Component {
           console.log(err);
         });
     }
-
+    
     componentDidMount() {
         fetch('http://localhost:9999/feed/cars', {
             method: 'GET'
